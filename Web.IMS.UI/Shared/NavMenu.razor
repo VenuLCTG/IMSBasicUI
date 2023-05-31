@@ -1,6 +1,6 @@
 ﻿@using Radzen.Blazor
 @inject NavigationManager NavigationManager
-@inject IJSRuntime _jsRuntime
+@inject IJSRuntime JS
 
 
 <nav class="navbar navbar-expand-md mb-4 border-bottom" style="border-style:solid;border-color:red;border-width: 4px 0px 0px 0px;">
@@ -55,24 +55,19 @@
                     </ul>
                 </li>
             </ul>
-
-            <form class="form-inline my-2 my-lg-0">
-
-                <Icon Name="IconName.Sun" Size="IconSize.x2" style="margin-right:20px;vertical-align: -0.4em;"></Icon>
-                <Icon Name="IconName.Bell" Size="IconSize.x2" style="margin-right:20px;vertical-align: -0.4em;" @onclick="LoadImage" />
-                <RadzenProfileMenu class="rz-p-3 rz-text-align-center" Click="@MenuClick" style="margin-right:15px;background-color:white;vertical-align: -0.4em;">
-                    <Template>
-                        <img src="/image/profile-pic.png" width="40" height="40" />
-                    </Template>
-                    <ChildContent>
-                        <RadzenProfileMenuItem Value="1" Text="Profile" Icon="account_circle"></RadzenProfileMenuItem>
-                        <RadzenProfileMenuItem Value="2" Text="Change Password" Icon="lock"></RadzenProfileMenuItem>
-                        <RadzenProfileMenuItem Value="3" Text="Settings & Privacy" Icon="settings"></RadzenProfileMenuItem>
-                        <RadzenProfileMenuItem Value="4" Text="Dark Mode" Icon="Switch"></RadzenProfileMenuItem>
-                        <RadzenProfileMenuItem Value="5" Text="Sign Out" Icon="logout"></RadzenProfileMenuItem>
-                    </ChildContent>
-                </RadzenProfileMenu>
-            </form>
+            <Icon Name="@iconName" Size="IconSize.x2" style="margin-right:20px;vertical-align: -0.4em;" @onclick="ChangeTheme"></Icon>
+            <Icon Name="IconName.Bell" Size="IconSize.x2" style="margin-right:20px;vertical-align: -0.4em;" @onclick="LoadImage" />
+            <RadzenProfileMenu class="rz-p-3 rz-text-align-center" Click="@MenuClick" style="margin-right:15px;background-color:white;vertical-align: -0.4em;">
+                <Template>
+                    <img src="/image/profile-pic.png" width="40" height="40" />
+                </Template>
+                <ChildContent>
+                    <RadzenProfileMenuItem Value="1" Text="Profile" Icon="account_circle"></RadzenProfileMenuItem>
+                    <RadzenProfileMenuItem Value="2" Text="Change Password" Icon="lock"></RadzenProfileMenuItem>
+                    <RadzenProfileMenuItem Value="3" Text="Settings & Privacy" Icon="settings"></RadzenProfileMenuItem>
+                    <RadzenProfileMenuItem Value="4" Text="Sign Out" Icon="logout"></RadzenProfileMenuItem>
+                </ChildContent>
+            </RadzenProfileMenu>
         </div>
     </div>
 </nav>
@@ -82,6 +77,7 @@
     private bool collapseNavMenu = true;
     private string? NavBarCssClass => collapseNavMenu ? null : "show";
     private string? NavButtonCssClass => collapseNavMenu ? "collapsed" : null;
+    private IconName iconName = IconName.Sun;
 
     private void ToggleNavMenu()
     {
@@ -102,9 +98,6 @@
                 NavigationManager.NavigateTo("/Settings");
                 break;
             case "4":
-                // NavigationManager.NavigateTo("");
-                break;
-            case "5":
                 NavigationManager.NavigateTo("");
                 break;
             default:
@@ -113,9 +106,23 @@
         }
     }
 
-    async Task LoadImage()
+    private async Task LoadImage()
     {
-        
+
+    }
+
+    private async Task ChangeTheme()
+    {
+        if (iconName == IconName.Sun)
+        {
+            iconName = IconName.Moon;
+        }
+        else
+        {
+            iconName = IconName.Sun;
+        }
+        //var module = await JS.InvokeAsync<IJSObjectReference>("import", "./js/site.js");
+        //await module.InvokeVoidAsync("setTheme", "dark");
     }
 
 }
