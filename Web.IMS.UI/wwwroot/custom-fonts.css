@@ -1,0 +1,166 @@
+﻿/*barlow*/
+@font-face {
+    font-family: 'barlow';
+    src: url('font/barlow.ttf') format('truetype');
+}
+/*barlow-semicondensed-black*/
+@font-face {
+    font-family: 'barlow-semicondensed-black';
+    src: url('font/barlow-semicondensed-black.ttf') format('truetype');
+}
+/*barlow-semicondensed-blackitalic*/
+@font-face {
+    font-family: 'barlow-semicondensed-blackitalic';
+    src: url('font/barlow-semicondensed-blackitalic.ttf') format('truetype');
+}
+/*barlow-semicondensed-bold*/
+@font-face {
+    font-family: 'barlow-semicondensed-bold';
+    src: url('font/barlow-semicondensed-bold.ttf') format('truetype');
+}
+/*barlow-semicondensed-bolditalic*/
+@font-face {
+    font-family: 'barlow-semicondensed-bolditalic';
+    src: url('font/barlow-semicondensed-bolditalic.ttf') format('truetype');
+}
+/*barlow-semicondensed-extrabold*/
+@font-face {
+    font-family: 'barlow-semicondensed-extrabold';
+    src: url('font/barlow-semicondensed-extrabold.ttf') format('truetype');
+}
+/*barlow-semicondensed-extrabolditalic*/
+@font-face {
+    font-family: 'barlow-semicondensed-extrabolditalic';
+    src: url('font/barlow-semicondensed-extrabolditalic.ttf') format('truetype');
+}
+/*barlow-semicondensed-extralight*/
+@font-face {
+    font-family: 'barlow-semicondensed-extralight';
+    src: url('font/barlow-semicondensed-extralight.ttf') format('truetype');
+}
+/*barlow-semicondensed-extralightitalic*/
+@font-face {
+    font-family: 'barlow-semicondensed-extralightitalic';
+    src: url('font/barlow-semicondensed-extralightitalic.ttf') format('truetype');
+}
+/*barlow-semicondensed-italic*/
+@font-face {
+    font-family: 'barlow-semicondensed-italic';
+    src: url('font/barlow-semicondensed-italic.ttf') format('truetype');
+}
+/*barlow-semicondensed-light*/
+@font-face {
+    font-family: 'barlow-semicondensed-light';
+    src: url('font/barlow-semicondensed-light.ttf') format('truetype');
+}
+/*barlow-semicondensed-lightitalic*/
+@font-face {
+    font-family: 'barlow-semicondensed-lightitalic';
+    src: url('font/barlow-semicondensed-lightitalic.ttf') format('truetype');
+}
+/*barlow-semicondensed-medium*/
+@font-face {
+    font-family: 'barlow-semicondensed-medium';
+    src: url('font/barlow-semicondensed-medium.ttf') format('truetype');
+}
+/*barlow-semicondensed-mediumitalic*/
+@font-face {
+    font-family: 'barlow-semicondensed-mediumitalic';
+    src: url('font/barlow-semicondensed-mediumitalic.ttf') format('truetype');
+}
+/*barlow-semicondensed-semibold*/
+@font-face {
+    font-family: 'barlow-semicondensed-semibold';
+    src: url('font/barlow-semicondensed-semibold.ttf') format('truetype');
+}
+/*barlow-semicondensed-semibolditalic*/
+@font-face {
+    font-family: 'barlow-semicondensed-semibolditalic';
+    src: url('font/barlow-semicondensed-semibolditalic.ttf') format('truetype');
+}
+/*barlow-semicondensed-thin*/
+@font-face {
+    font-family: 'barlow-semicondensed-thin';
+    src: url('font/barlow-semicondensed-thin.ttf') format('truetype');
+}
+/*barlow-semicondensed-thinitalic*/
+@font-face {
+    font-family: 'barlow-semicondensed-thinitalic';
+    src: url('font/barlow-semicondensed-thinitalic.ttf') format('truetype');
+}
+/*barlow-medium*/
+@font-face {
+    font-family: 'barlow-medium';
+    src: url('font/barlow-medium.ttf') format('truetype');
+}
+footer {
+    background-color: #f5f5f5;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    font-family:barlow;
+    opacity:100%;
+}
+.footer-content {
+    max-width: 960px;
+    margin: 0 auto;
+}
+.rz-navigation-item-link {
+    font-family: barlow-medium;
+    font-size: 16px;
+}
+
+.nav-link {
+    position: relative;
+    color: black;
+    font-family: barlow-medium;
+}
+
+    .nav-link::after {
+        content: '';
+        opacity: 0;
+        transition: all 0.2s;
+        height: 2px;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        background-color: red;
+        bottom: -20px;
+        pointer-events: none;
+    }
+
+    .nav-link:hover {
+        color: red;
+    }
+
+        .nav-link:hover::after {
+            opacity: 1;
+        }
+
+.nav-link {
+    position: relative;
+}
+
+.navbar .nav-link.active {
+    color: red;
+    position: relative;
+}
+
+.navbar .nav-link.active::after {
+  content: '';
+  height: 2px;
+  width: 100%;
+  left: 0;
+  background-color: red;
+}
+
+.nav-link:hover::after {
+    opacity: 1;
+}
+
+.navbar-toggler {
+    background-color: cadetblue;
+}

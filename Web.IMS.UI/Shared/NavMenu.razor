@@ -1,0 +1,102 @@
+﻿@using Radzen
+@inject NavigationManager NavigationManager
+@inject IJSRuntime _jsRuntime
+
+
+<nav class="navbar navbar-expand-md mb-4 border-bottom" style="border-style:solid;border-color:red;border-width: 4px 0px 0px 0px;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">
+            <img src="/image/languagelink.png" width="140" height="60" />
+        </a>
+        <button class="navbar-toggler @NavButtonCssClass" type="button" aria-controls="navbarCollapse"
+                aria-label="Toggle navigation" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse @NavBarCssClass" id="navbarCollapse" @onclick="ToggleNavMenu">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <NavLink class="nav-link" style="margin-left:100px" href="" Match="NavLinkMatch.All">
+                        Home
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" style="margin-left:30px" href="Jobs">
+                        Jobs
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" style="margin-left:30px" href="MySchedule">
+                        My Schedule
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" style="margin-left:30px" href="ServiceFees">
+                        Service Fees
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" style="margin-left:30px" href="Support">
+                        Support
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" style="margin-left:30px" href="Resources">
+                        Resources
+                    </NavLink>
+                </li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+               @* <RadzenButton Icon="switch"></RadzenButton>*@
+                <RadzenButton ButtonStyle="ButtonStyle.Info" style="margin-right:25px" Icon="info" />
+                <RadzenProfileMenu Click="@MenuClick" style="margin-right:20px" class="rounded-circle">
+                    <ChildContent>
+                        <RadzenProfileMenuItem Value="1" Text="Profile" Icon="account_circle"></RadzenProfileMenuItem>
+                        <RadzenProfileMenuItem Value="2" Text="Change Password" Icon="lock"></RadzenProfileMenuItem>
+                        <RadzenProfileMenuItem Value="3" Text="Settings & Privacy" Icon="settings"></RadzenProfileMenuItem>
+                        <RadzenProfileMenuItem Value="4" Text="Dark Mode" Icon="Switch"></RadzenProfileMenuItem>
+                        <RadzenProfileMenuItem Value="5" Text="Sign Out" Icon="logout"></RadzenProfileMenuItem>
+                    </ChildContent>
+                </RadzenProfileMenu>
+            </form>
+        </div>
+    </div>
+</nav>
+
+@code {
+    bool value;
+    private bool collapseNavMenu = true;
+    private string? NavBarCssClass => collapseNavMenu ? null : "show";
+    private string? NavButtonCssClass => collapseNavMenu ? "collapsed" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+    async Task MenuClick(RadzenProfileMenuItem item)
+    {
+        switch (item.Value)
+        {
+            case "1":
+                NavigationManager.NavigateTo("/UserProfile");
+                break;
+            case "2":
+                NavigationManager.NavigateTo("/ChangePassword");
+                break;
+                 case "3":
+                NavigationManager.NavigateTo("/Settings");
+                break;
+            case "4":
+               // NavigationManager.NavigateTo("");
+                break;
+            case "5":
+                NavigationManager.NavigateTo("");
+                break;
+            default:
+                NavigationManager.NavigateTo("");
+                break;
+        }
+    }
+
+}
