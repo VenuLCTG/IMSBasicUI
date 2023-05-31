@@ -1,4 +1,4 @@
-﻿@using Radzen
+﻿@using Radzen.Blazor
 @inject NavigationManager NavigationManager
 @inject IJSRuntime _jsRuntime
 
@@ -44,12 +44,26 @@
                         Resources
                     </NavLink>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Login</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
             </ul>
 
             <form class="form-inline my-2 my-lg-0">
-               @* <RadzenButton Icon="switch"></RadzenButton>*@
-                <RadzenButton ButtonStyle="ButtonStyle.Info" style="margin-right:25px" Icon="info" />
-                <RadzenProfileMenu Click="@MenuClick" style="margin-right:20px" class="rounded-circle">
+
+                <Icon Name="IconName.Sun" Size="IconSize.x2" style="margin-right:20px;vertical-align: -0.4em;"></Icon>
+                <Icon Name="IconName.Bell" Size="IconSize.x2" style="margin-right:20px;vertical-align: -0.4em;" @onclick="LoadImage" />
+                <RadzenProfileMenu class="rz-p-3 rz-text-align-center" Click="@MenuClick" style="margin-right:15px;background-color:white;vertical-align: -0.4em;">
+                    <Template>
+                        <img src="/image/profile-pic.png" width="40" height="40" />
+                    </Template>
                     <ChildContent>
                         <RadzenProfileMenuItem Value="1" Text="Profile" Icon="account_circle"></RadzenProfileMenuItem>
                         <RadzenProfileMenuItem Value="2" Text="Change Password" Icon="lock"></RadzenProfileMenuItem>
@@ -84,11 +98,11 @@
             case "2":
                 NavigationManager.NavigateTo("/ChangePassword");
                 break;
-                 case "3":
+            case "3":
                 NavigationManager.NavigateTo("/Settings");
                 break;
             case "4":
-               // NavigationManager.NavigateTo("");
+                // NavigationManager.NavigateTo("");
                 break;
             case "5":
                 NavigationManager.NavigateTo("");
@@ -97,6 +111,11 @@
                 NavigationManager.NavigateTo("");
                 break;
         }
+    }
+
+    async Task LoadImage()
+    {
+        
     }
 
 }
